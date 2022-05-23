@@ -99,16 +99,19 @@ async function copyFileFs(component) {
 async function copyAssets() {
     let arrDir = await readDir('assets') 
     
-    for (let item of arrDir) {
-        let pathDir = path.resolve(__dirname, 'assets', `${item}`)
-        fs.stat(pathDir, (err, data) => {
-            if (data.isDirectory()) {
-                createDir('project-dist', 'assets', `${item}`)
-            } else if (data.isFile()) {
-                fs.copyFile(pathDir, path.resolve(__dirname, 'project-dist', 'assets', `${item}`), () => {})
-            }
-        })
-    } 
+    try {
+        for (let item of arrDir) {
+            let pathDir = path.resolve(__dirname, 'assets', `${item}`)
+            fs.stat(pathDir, (err, data) => {
+                   if (data.isDirectory()) {
+                    createDir('project-dist', 'assets', `${item}`)
+                } else if (data.isFile()) {
+                    fs.copyFile(pathDir, path.resolve(__dirname, 'project-dist', 'assets', `${item}`), () => {})
+                } 
+            })
+        }
+    } catch (e) {console.log('No folder Assets')}
+     
 }
  
 
