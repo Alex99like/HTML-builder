@@ -12,11 +12,11 @@ fs.writeFile(path.resolve(__dirname, 'text.txt'), '', () => enterText())
 
 function enterText () {
     readline.question('Enter text: ', (name) => {
-    fs.appendFile(path.resolve(__dirname, 'text.txt'), name + '\n', () => {
-        if (name != 'exit') return enterText()
-        readline.close()
-        process.exit()
-        })
+        if (name == 'exit') {
+            readline.close()
+            process.exit()
+        }
+    fs.appendFile(path.resolve(__dirname, 'text.txt'), name + '\n', () => enterText())
     })
 }
 
