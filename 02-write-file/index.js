@@ -5,6 +5,7 @@ const readline = require('readline').createInterface({
 })
 
 process.on('exit', () => console.log(`\nGoodLuck!!!`));
+console.log("Hello enter your text)")
 
 
 fs.writeFile(path.resolve(__dirname, 'text.txt'), '', () => enterText())

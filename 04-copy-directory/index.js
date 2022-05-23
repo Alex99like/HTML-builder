@@ -2,37 +2,6 @@ const fs = require('fs')
 const path = require('path')
 
 
-// const createDir = async (pathFn) => {
-//   fs.rm(path.join(__dirname, 'copy-file'),{recursive: true}, () => {
-//     return new Promise((resolve, reject) => fs.mkdir(pathFn, (err) => {
-//         if (err) {
-//           return reject(err.message)
-//         }
-//         resolve()
-//       }))
-//   })
-// }
-
-// const copyFileFn = async (pathFn, copyPath) => {
-//     return new Promise((resolve, reject) => {
-//         fs.readdir(pathFn, (err, data) => {
-//             for (let item of data) {
-//                 console.log(item)
-//                 fs.copyFile(path.join(__dirname, 'files', `test-css.css`), path.join(__dirname, 'copy-file', `test-css.css`), () => {})
-//             }
-//         })
-
-//         return resolve()
-//     })
-// }
-
-// createDir(path.resolve(__dirname, 'copy-file'))
-//   .then(() => copyFileFn(path.resolve(__dirname, 'files')))
-
-
-
-
-
 function copyFileFn(pathCopy) {
     fs.readdir(pathCopy, (err, arr) => {
         for (let item of arr) {
@@ -76,3 +45,5 @@ function copyDir () {
 
 
 copyDir()
+
+
